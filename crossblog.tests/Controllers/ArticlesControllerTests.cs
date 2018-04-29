@@ -107,18 +107,18 @@ namespace crossblog.tests.Controllers
             Assert.Equal("Title1", content.Title);
         }
 
-        [Fact]
-        public async void PostSetsLocationHeader()
-        {
-            _articleRepositoryMock.Setup(x => x.)
-            // Act
-            IActionResult actionResult = _articlesController.Post(new ArticleModel { Id = 10, Title = "ArticleModel1" });
-            var createdResult = actionResult as CreatedAtRouteNegotiatedContentResult<Product>;
+        //[Fact]
+        //public async void PostSetsLocationHeader()
+        //{
+        //    _articleRepositoryMock.Setup(x => x.)
+        //    // Act
+        //    IActionResult actionResult = _articlesController.Post(new ArticleModel { Id = 10, Title = "ArticleModel1" });
+        //    var createdResult = actionResult as CreatedAtRouteNegotiatedContentResult<Product>;
 
-            // Assert
-            Assert.IsNotNull(createdResult);
-            Assert.AreEqual("DefaultApi", createdResult.RouteName);
-            Assert.AreEqual(10, createdResult.RouteValues["id"]);
-        }
+        //    // Assert
+        //    Assert.IsNotNull(createdResult);
+        //    Assert.AreEqual("DefaultApi", createdResult.RouteName);
+        //    Assert.AreEqual(10, createdResult.RouteValues["id"]);
+        //}
     }
 }

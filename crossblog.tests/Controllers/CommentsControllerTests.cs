@@ -26,5 +26,42 @@ namespace crossblog.tests.Controllers
         {
             _commentsController = new CommentsController(_articleRepositoryMock.Object, _commentsRepositoryMock.Object);
         }
+
+        [Fact]
+        public async Task Get_NotFound()
+        {
+            // Arrange
+            _commentsRepositoryMock.Setup(m => m.GetAsync(1)).Returns(Task.FromResult<Comment>(null));
+
+            // Act
+            var result = await _commentsController.Get(1);
+
+            // Assert
+            Assert.NotNull(result);
+
+            var objectResult = result as NotFoundResult;
+            Assert.NotNull(objectResult);
+        }
+
+        //[Fact]
+        //public async Task Get_ReturnsItem()
+        //{
+        //    // Arrange
+        //    _commentsRepositoryMock.Setup(m => m.GetAsync(1)).Returns(Task.FromResult<Comment>(Builder<Comment>.CreateNew().Build()));
+
+        //    // Act
+        //    var result = await _commentsController.Get(1);
+
+        //    // Assert
+        //    Assert.NotNull(result);
+
+        //    var objectResult = result as OkObjectResult;
+        //    Assert.NotNull(objectResult);
+
+        //    var content = objectResult.Value as CommentModel;
+        //    Assert.NotNull(content);
+
+        //    Assert.Equal("Title1", content.Title);
+        //}
     }
 }
