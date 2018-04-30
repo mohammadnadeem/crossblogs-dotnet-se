@@ -27,6 +27,11 @@ namespace crossblog.Migrations
                     table.PrimaryKey("PK_Articles", x => x.Id);
                 });
 
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_Title",
+                table: "Articles",
+                column: "Title");
+
             migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
@@ -57,6 +62,7 @@ namespace crossblog.Migrations
                 name: "IX_Comments_ArticleId",
                 table: "Comments",
                 column: "ArticleId");
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
